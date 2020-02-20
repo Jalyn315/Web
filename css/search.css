@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+    padding: 0;
+    background:#fd79a8;
+}
+.search-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+/* 
+ 弹性盒子和CSS3的一种新的布局方式
+    CSS3弹性盒子（flexible Box 或 flexbox），是一种当页面需要适应不同的屏幕大小以及
+    设备类型是确保元素拥有恰当的行为的布局方式。
+    引入弹性盒子布局模型的目的是提供一种更加有效的方式来对一个容器的子元素进行排列，对齐和分配空白空间
+*/
+
+.search-box:hover>.search-txt{
+    width: 240px;
+    padding: 0 6px;
+}
+
+.search-box:hover>.search-btn{
+    background: white;
+}
+.search-btn{
+    color: #fd79a8;
+    float: right;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border-radius: 50%;
+    /* 设置显示方式为弹性盒子 */
+    display: flex;
+    /* justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。 */
+    justify-content: center;
+    /* align-items 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式 */
+    align-items: center;
+    transition: 0.4s;
+}
+
+.search-txt{
+    border: none;
+    background: none;
+    /* outline（轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。 */
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+
+}
