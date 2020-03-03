@@ -1,0 +1,136 @@
+/* 清除默认样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    /* 弹性盒子 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:#81ecec;
+}
+.container{
+    position: relative;
+    width: 24rem;
+}
+
+.panel{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.switch h1{
+    text-align: center;
+    font-size: 1.4rem;
+    color: rgba(125, 116, 255, .8);
+    border-bottom: rgba(125, 116, 255, .8) solid 2px;
+    /*设置光标 */
+    cursor: default;
+}
+
+.input input{
+    /* 去除输入框进入焦点的强调框 */
+    outline:none;
+    width:100%;
+    border:none;
+    background: none;
+    border-bottom: .1rem solid #7d74ff;
+    font-size: 1rem;
+}
+
+.input::after {
+    content: attr(aria-placeholder);
+    position: absolute;
+    left: 0;
+    top: -20%;
+    font-size: 1.1rem;
+    color: rgba(125, 116, 255, 0.44);
+    transition: .3s;
+}
+
+.input.focuss::after{
+    top: -70%;
+    font-size: 1rem;
+}
+
+.input#forget:hover{
+    color: rgba(138, 143, 255, 0.4);
+}
+.input#signUp{
+    color: #7d74ff;
+    font-size: 0.8rem;
+    text-decoration: none;
+
+}
+
+.input#signUp:hover{
+    color: rgba(138, 143, 255, 0.4);
+}
+
+form p{
+    text-align: center;
+}
+
+form span{
+    color: #7d74ff;
+    font-size: 0.8rem;
+    cursor: default;
+}
+
+form{
+    width: 12rem;
+    margin: 1rem 0 0;
+}
+
+form .input{
+    position:relative;
+    opacity: 1;
+    width: 100%;
+    margin: 2rem 0 0;
+    height: 42px;    
+}
+form.input#userName{
+    margin:3rem 0 0;
+}
+
+form.input#password{
+    height: 1.6rem;
+}
+form button{
+    display: block;
+    border: none;
+    outline: none;
+    margin: 2rem 61px 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    /* 颜色渐变 */
+    background: linear-gradient(90deg, #8a8fff, rgb(216,174,255));
+    cursor: pointer;
+}
+
+form button:hover{
+    border: none;
+    outline: none;
+    margin :2rem -7px 0;
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 3rem;
+    background: linear-gradient(90deg, rgba(138,143,255,075), rgba(216,174,255,0.75));
+    box-shadow: 0 0 8px #8a8fff;
+    cursor: pointer;
+    color: rgba(0,0,0,0.6);
+    transition: 0.4s;
+}
