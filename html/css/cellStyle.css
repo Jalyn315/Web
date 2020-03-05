@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: px;
+}   
+
+.container{
+    width: 800px;
+    height: 800px;
+    background: #000;
+    margin: 20px auto;
+    position: relative;
+    padding-top: 20px;
+}
+.battery{
+    width: 200px;
+    height: 320px;
+    background-color: #fff;
+    margin: 20px auto;
+    border-radius: 15px 15px 5px 5px ;
+    position: relative;
+}
+
+.battery::before{
+    content: "";
+    width: 50px;
+    height: 20px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    margin-left: -25px;
+}
+.battery::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 90%;
+    bottom: 0;
+    /* inear-gradient(direction,color-stop1,color-stop1····) 函数用于创建一个线性渐变的 "图像"
+        direction	用角度值指定渐变的方向（或角度）。
+        color-stop1, color-stop2,...	用于指定渐变的起止颜色。
+    */
+    background: linear-gradient(to bottom, #7abcff 0%, #00BCD4 44%, #2196F3 100%);
+    /* infinite 该动画无线播放 n 可以设置该动画的播放n次
+       linear 动画播放速度从头到尾都是相同的
+       5s 动画完成完成的时间
+       charge 绑定到选择器的 keyframe 名称。
+       @keyframes 规则，您能够创建动画,能将一套css转变为另一套css
+    */
+    animation: charge 10s linear infinite;
+    
+    
+}
+
+@keyframes charge{
+    /* n% 表示动画完成的百分比，{}中表示到哪该过程时，css样式的属性值 */
+    0%{
+        top: 100%;
+        /* 给图像应用色相旋转。"angle"一值设定图像会被调整的色环角度值
+        。值为0deg，则图像无变化。若值未设置，默认值是0deg。该值虽然没
+        有最大值，超过360deg的值相当于又绕一圈。
+         */
+        filter:hue-rotate(90deg)
+    }
+    95%{
+        top: 5%;
+        border-radius: 0px;
+    }
+    100%{
+        top: 0%;
+        border-radius: 15px 15px 0 0;
+        filter:hue-rotate(0deg)
+    }
+}
+
+.cover{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 15px 15px 5px 5px;
+    left: 0;
+    top: 0;
+    /* 设置层级 */
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cover::before{
+    content: "";
+    width: 400px;
+    height: 400px;
+    /* 这种方法设置背景颜色可以设置透明度并且不影响 到子元素的显示
+        透明体不为1的话会出现分层
+    */
+    background: rgba(255, 255, 255, 1);
+    /* 因为层级脱离了父元素 绝对定位的参照是祖先元素 */
+    position: absolute;
+    border-radius: 34% 25%;
+    left: -50%;
+    animation: coverBefor 10s linear infinite;
+
+}
+/* 这里设置两个旋转图案的原因是使电池中的充电修改过在视觉上形成3d效果 */
+.cover::after{
+    content: "";
+    width: 400px;
+    height: 400px;
+    /* 这种方法设置背景颜色可以设置透明度并且不影响 到子元素的显示 */
+    background: rgba(255, 255, 255,0.6);
+    /* 因为层级脱离了父元素 绝对定位的参照是祖先元素 */
+    position: absolute;
+    border-radius: 36% 33%;
+    left: -50%;
+    animation: coverAfter 10s linear infinite;
+
+}
+
+@keyframes coverBefor{
+    0%{
+        /* Transform属性应用于元素的2D或3D转换。
+        这个属性允许你将元素旋转，缩放，移动，倾斜等。
+        rotate(angle)	定义 2D 旋转，在参数中规定角度。
+            angele : 角度
+        */
+        transform: rotate(0deg);
+        bottom: 0%;
+    }
+    100%{
+        transform: rotate(360deg);
+        bottom: 100%;
+    }
+}
+
+@keyframes coverAfter{
+    0%{
+        transform: rotate(30deg);
+        bottom: 0%;
+    }
+    100%{
+        transform: rotate(360deg);
+        bottom: 95%;
+    }
+}
