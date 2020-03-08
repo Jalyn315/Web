@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素。 */
+    /* 为元素设定的宽度和高度决定了元素的边框盒。
+
+就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。
+
+通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。 */
+    box-sizing: border-box;
+}
+body{
+    /* Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性
+    。设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。 */
+    display: flex;
+    /* justify-content 用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。 */
+    justify-content: center;
+    /* align-items 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。 */
+    align-items: center;
+    min-height: 100vh;
+    background: #5d3800;
+}
+
+.face{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #ffcd00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.face::before{
+    content: "";
+    position: absolute;
+    top: 180px;
+    width: 150px;
+    height: 70px;
+    background: #b57700;
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    /* 元素设置过渡 */
+    transition: 0.5s;
+}
+
+.face:hover::before{
+    top: 210px;
+    width: 150px;
+    height: 20px;
+    background: #b57700;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    
+}
+.eyes{
+    position: relative;
+    top: -40px;
+    display: flex;
+}
+
+.eyes .eye{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: block;
+    background: #fff;
+    margin: 0 15px;
+    border-radius: 50%;
+}
+
+.eyes .eye::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    /* 弹性布局移动元素布局的方式 */
+    transform: translate(-50%,-50%);
+    width: 40px;
+    height: 40px;
+    background: #333;
+    border-radius: 50%;
+}

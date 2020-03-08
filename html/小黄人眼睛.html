@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/eyeStyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="face">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector('body')
+    .addEventListener('mousemove',eyeball);
+    function eyeball(){
+        var eye = document.querySelectorAll('.eye');
+        eye.forEach(function(eye){
+            let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+            let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+            let radian = Math.atan2(event.pageX - x, event.pageY - y);
+            let rot = (radian * (180 / Math.PI) * -1) -90;
+            eye.style.transform = "rotate(" + rot + "deg)";
+        });
+    }
+</script>
+<!-- 
+    解析:
+        1.给body添加鼠标移动事件，每次移动触发eyeball函数
+
+        2.eyeball()使eye的转动;
+            -transform 属性应用于元素的2D或3D转换。这个属性允许你将元素旋转，缩放，移动，倾斜等。
+                -rotate(" + rot + "deg) 定义2d旋转 rot是度数，deg是角度单位，以元素的中心点作为轴心
+        3.getBoundingClientRect()这个方法返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离。
+
+                alert(box.getBoundingClientRect().top);         // 元素上边距离页面上边的距离
+
+                alert(box.getBoundingClientRect().right);       // 元素右边距离页面左边的距离
+
+                alert(box.getBoundingClientRect().bottom);      // 元素下边距离页面上边的距离
+
+                alert(box.getBoundingClientRect().left);        // 元素左边距离页面左边的距离   
+        4.
+            clientHeight	获取元素可视部分的高度，即 CSS 的 height 和 padding 属性值之和，元素边框和滚动条不包括在内，也不包含任何可能的滚动区域
+            clientWidth	获取元素可视部分的宽度，即 CSS 的 width 和 padding 属性值之和，元素边框和滚动条不包括在内，也不包含任何可能的滚动区域
+
+        主要原理 获取鼠标的 距离 eye的中心点的x轴与y轴  然后使用 Math.atan2() 获取弧度。再根据公式求得角度进行旋转，设置偏移量。使眼球方法与鼠标方向重合
+          ---------《 弧度变角度 180/π×弧度》
+
+ -->
+</html>
